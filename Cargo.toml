@@ -1,6 +1,6 @@
 [package]
 name        = "openshaiya-extractor"
-version     = "0.0.1"
+version     = "0.0.2"
 description = "A tool for extracting Shaiya archives."
 repository  = "https://github.com/OpenShaiya/archive-extractor/"
 license     = "ISC"
