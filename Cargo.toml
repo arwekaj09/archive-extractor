@@ -1,0 +1,18 @@
+[package]
+name        = "openshaiya-extractor"
+version     = "0.0.1"
+description = "A tool for extracting Shaiya archives."
+repository  = "https://github.com/OpenShaiya/archive-extractor/"
+license     = "ISC"
+readme      = "README.md"
+authors     = ["Triston Plummer"]
+edition     = "2018"
+
+[[bin]]
+name    = "openshaiya-extractor"
+path    = "src/main.rs"
+
+[dependencies]
+anyhow      = "1.0"
+clap        = "2.33"
+libshaiya   = { path = "C:/Users/Cups/Documents/Shaiya/openshaiya/libshaiya" }
