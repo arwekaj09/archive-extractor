@@ -75,12 +75,30 @@ fn extract(archive: &mut Archive, path: &Path, folder: SFolder) -> anyhow::Resul
 
     for file in folder.files() {
         let data = archive.file_data(file)?;
-        fs::write(path.join(Path::new(&file.name)), data)?;
+        let name = &file.name;
+        let lossy_name = to_lossy_string(name);
+        
+        fs::write(path.join(Path::new(&lossy_name)), data)?;
     }
 
     for folder in folder.subdirectories() {
-        let subdir_path = path.join(Path::new(&folder.name));
+        let name = &folder.name;
+        let lossy_name = to_lossy_string(name);
+
+        let subdir_path = path.join(Path::new(&lossy_name));
         extract(archive, &subdir_path, folder.clone())?;
     }
     Ok(())
+}
+
+/// Converts a string to a "lossy" string, which replaces invalid characters
+/// with the `_` symbol.
+///
+/// # Arguments
+/// * `input`   - The string to strip.
+fn to_lossy_string(input: &String) -> String {
+    String::from_utf8_lossy(input.as_bytes())
+        .to_string()
+        .replace("\u{FFFD}", "_")
+        .replace("?", "_")
 }
