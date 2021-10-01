@@ -15,4 +15,4 @@ path    = "src/main.rs"
 [dependencies]
 anyhow      = "1.0"
 clap        = "2.33"
-libshaiya   = { path = "C:/Users/Cups/Documents/Shaiya/openshaiya/libshaiya" }
+libshaiya   = "0.0.4"
